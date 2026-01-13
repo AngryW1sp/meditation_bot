@@ -11,4 +11,3 @@ def admin_choise():
     return kb.as_markup()
 
 
-def 
