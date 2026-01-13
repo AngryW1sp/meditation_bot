@@ -10,6 +10,8 @@ from bot.core.config import settings
 from bot.handlers.start import router as start_router
 from bot.handlers.admin import router as admin_router
 from bot.handlers.content import router as content_router
+from bot.core.db import init_db
+from bot.handlers.admin_crud import router as admin_crud_router
 
 
 async def main():
@@ -17,11 +19,13 @@ async def main():
         token=settings.bot_token,
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
-
+    
     dp = Dispatcher()
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
+    await init_db()
     dp.include_router(start_router)
     dp.include_router(admin_router)
+    dp.include_router(admin_crud_router)
     dp.include_router(content_router)
     await dp.start_polling(bot)  # type: ignore
 

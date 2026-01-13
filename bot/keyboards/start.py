@@ -7,7 +7,8 @@ def start_kb():
             [KeyboardButton(text="Медитации")],
             [KeyboardButton(text="Аффирмации")],
             [KeyboardButton(text="Советы")],
+            [KeyboardButton(text="Уведомления")],
             [KeyboardButton(text="Админ-панель")],
-        ]
+        ], resize_keyboard=True
     )
     return kb
